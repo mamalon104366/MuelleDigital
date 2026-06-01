@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muelle Digital — Sustentación</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --morado:#512888; --morado2:#7841d4; --morado3:#a488f0;
+    --lavanda:#ede9fd; --lavanda2:#f6f4fe; --tinta:#241a38; --gris:#5b5570;
+  }
+  .reveal{ font-family:'Inter',sans-serif; color:var(--tinta); font-size:30px; }
+  .reveal h1,.reveal h2,.reveal h3{ font-family:'Poppins',sans-serif; color:var(--morado); text-transform:none; letter-spacing:0; font-weight:800; }
+  .reveal h2{ font-size:1.6em; margin-bottom:.4em; }
+  .reveal h2.tt{ border-left:8px solid var(--morado2); padding-left:.4em; }
+  .reveal h3{ color:var(--morado2); font-weight:700; }
+  .reveal p,.reveal li{ color:var(--tinta); line-height:1.35; }
+  .reveal .muted{ color:var(--gris); }
+  .reveal strong{ color:var(--morado); }
+  .reveal section{ text-align:left; }
+  .reveal ul{ display:block; }
+  .reveal li{ margin:.18em 0; }
+  /* fondo */
+  .reveal .backgrounds{ background:#ffffff; }
+  /* portada */
+  .cover{ text-align:center !important; }
+  .cover .logo{ width:170px; height:170px; border-radius:50%; background:#fff; padding:14px; box-shadow:0 10px 40px rgba(81,40,136,.25); object-fit:contain; }
+  .cover h1{ font-size:3.1em; margin:.25em 0 0; background:linear-gradient(90deg,var(--morado),var(--morado2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .cover .sub{ font-size:1.05em; color:var(--gris); margin-bottom:1em; }
+  .team{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:.6em; }
+  .team .m{ background:var(--lavanda); border-radius:14px; padding:10px 16px; font-size:.62em; }
+  .team .m b{ color:var(--morado); display:block; }
+  /* chips / cards */
+  .grid{ display:grid; gap:18px; }
+  .g2{ grid-template-columns:1fr 1fr; } .g3{ grid-template-columns:1fr 1fr 1fr; } .g4{ grid-template-columns:repeat(4,1fr); }
+  .card{ background:#fff; border:1.5px solid var(--lavanda); border-radius:16px; padding:18px 20px; box-shadow:0 6px 22px rgba(81,40,136,.07); }
+  .card.lav{ background:var(--lavanda2); border-color:#e0d8fa; }
+  .card h3{ margin:.1em 0 .3em; font-size:.85em; }
+  .card p,.card li{ font-size:.62em; color:var(--gris); }
+  .pill{ display:inline-block; background:var(--morado); color:#fff; border-radius:999px; padding:.12em .7em; font-size:.5em; font-weight:600; font-family:'Poppins'; }
+  .big{ font-size:2.4em; font-weight:800; color:var(--morado); font-family:'Poppins'; line-height:1; }
+  /* logos tecnologías */
+  .logos{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px 10px; }
+  .logo-card{ display:flex; flex-direction:column; align-items:center; gap:8px; background:#fff; border:1.5px solid var(--lavanda); border-radius:14px; padding:14px 6px; }
+  .logo-card img{ width:46px; height:46px; }
+  .logo-card span{ font-size:.42em; color:var(--gris); font-weight:600; text-align:center; }
+  .cat{ font-size:.5em; color:var(--morado2); font-weight:700; font-family:'Poppins'; text-transform:uppercase; letter-spacing:.05em; margin:.2em 0 .1em; }
+  /* arquitectura */
+  .arch{ display:flex; align-items:center; justify-content:center; gap:10px; margin-top:.4em; }
+  .arch .box{ flex:1; background:var(--lavanda2); border:2px solid var(--morado2); border-radius:16px; padding:18px 12px; text-align:center; }
+  .arch .box b{ color:var(--morado); display:block; font-family:'Poppins'; font-size:.7em; }
+  .arch .box small{ font-size:.5em; color:var(--gris); }
+  .arch .box .ic{ display:flex; gap:6px; justify-content:center; margin-top:8px; }
+  .arch .box .ic img{ width:26px; height:26px; }
+  .arch .ar{ font-size:1.6em; color:var(--morado2); }
+  /* ER */
+  .er{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:.3em; }
+  .er .e{ background:#fff; border:1.5px solid var(--morado3); border-radius:12px; padding:10px 12px; }
+  .er .e b{ color:var(--morado); font-family:'Poppins'; font-size:.62em; }
+  .er .e p{ font-size:.42em; color:var(--gris); margin:.2em 0 0; }
+  /* feature list */
+  .feat{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .feat .f{ display:flex; gap:12px; align-items:flex-start; background:var(--lavanda2); border-radius:14px; padding:12px 16px; }
+  .feat .f .em{ font-size:1.3em; }
+  .feat .f b{ color:var(--morado); font-size:.7em; font-family:'Poppins'; }
+  .feat .f p{ font-size:.55em; color:var(--gris); margin:.1em 0 0; }
+  /* steps */
+  .steps{ display:flex; gap:10px; margin-top:.5em; }
+  .steps .s{ flex:1; background:var(--lavanda2); border-radius:14px; padding:14px; text-align:center; }
+  .steps .s .n{ width:34px;height:34px;line-height:34px; border-radius:50%; background:var(--morado); color:#fff; font-weight:700; margin:0 auto 8px; font-family:'Poppins'; }
+  .steps .s p{ font-size:.5em; color:var(--gris); }
+  /* listas con check */
+  .reveal ul.check{ list-style:none; margin-left:0; }
+  .reveal ul.check li{ position:relative; padding-left:1.4em; font-size:.78em; }
+  .reveal ul.check li:before{ content:'✓'; position:absolute; left:0; color:var(--morado2); font-weight:800; }
+  /* brand bar */
+  .brandbar{ position:fixed; bottom:14px; left:18px; display:flex; align-items:center; gap:8px; z-index:40; opacity:.9; }
+  .brandbar img{ width:26px; height:26px; border-radius:50%; background:#fff; padding:2px; }
+  .brandbar span{ font-family:'Poppins'; font-weight:700; color:var(--morado); font-size:14px; }
+  .reveal .slide-number{ background:transparent; color:var(--morado2); font-family:'Poppins'; font-weight:600; }
+  .url{ font-family:'Poppins'; color:var(--morado2); font-weight:600; }
+  .center{ text-align:center !important; }
+</style>
+</head>
+<body>
+<div class="brandbar"><img src="logomuelle.png" alt=""><span>Muelle Digital</span></div>
+<div class="reveal"><div class="slides">
+
+<!-- 1 PORTADA -->
+<section data-background-color="#ffffff" class="cover">
+  <img class="logo" src="logomuelle.png" alt="Muelle Digital">
+  <h1>Muelle Digital</h1>
+  <p class="sub">Marketplace de experiencias ecoturísticas fluviales · Barrancabermeja</p>
+  <div class="team">
+    <div class="m"><b>Esteban Merlano</b>Líder · Backend · Despliegue</div>
+    <div class="m"><b>Andres Rangel</b>Base de Datos</div>
+    <div class="m"><b>Keyner Trujillo</b>Frontend</div>
+    <div class="m"><b>Jhon Escobar</b>QA</div>
+  </div>
+  <p class="muted" style="font-size:.55em;margin-top:1em;">Proyecto de Ingeniería de Software · Metodología SDD</p>
+</section>
+
+<!-- 2 PROBLEMA -->
+<section>
+  <h2 class="tt">El problema</h2>
+  <p>El ecoturismo fluvial en Barrancabermeja se ofrece de forma <strong>informal</strong>:</p>
+  <ul>
+    <li>🔍 No hay un canal <strong>centralizado</strong> para reservar.</li>
+    <li>💸 Precios poco claros y sin <strong>pagos digitales</strong>.</li>
+    <li>🤝 Falta de <strong>confianza</strong> y reputación de los guías.</li>
+    <li>📵 Los turistas no saben a quién contactar.</li>
+  </ul>
+</section>
+
+<!-- 3 SOLUCIÓN -->
+<section>
+  <h2 class="tt">La solución</h2>
+  <p><strong>Muelle Digital</strong> conecta turistas con guías y pescadores locales verificados:</p>
+  <div class="grid g4" style="margin-top:.5em;">
+    <div class="card lav center"><div style="font-size:1.6em">🛶</div><h3>Descubrir</h3><p>Catálogo con filtros</p></div>
+    <div class="card lav center"><div style="font-size:1.6em">📅</div><h3>Reservar</h3><p>Con control de cupos</p></div>
+    <div class="card lav center"><div style="font-size:1.6em">💳</div><h3>Pagar</h3><p>En línea con Stripe</p></div>
+    <div class="card lav center"><div style="font-size:1.6em">⭐</div><h3>Calificar</h3><p>Reseñas en vivo</p></div>
+  </div>
+  <p class="muted" style="font-size:.6em;margin-top:.7em;">+ punto de encuentro geolocalizado en un mapa.</p>
+</section>
+
+<!-- 4 OBJETIVOS -->
+<section>
+  <h2 class="tt">Objetivos</h2>
+  <div class="card"><h3>General</h3><p style="font-size:.8em;color:var(--tinta)">Desarrollar una plataforma web tipo marketplace para reservar y pagar experiencias ecoturísticas fluviales.</p></div>
+  <h3 style="margin-top:.5em;font-size:.8em">Específicos</h3>
+  <ul class="check">
+    <li>Reservas digitales con control de cupos.</li>
+    <li>Pagos en línea (Stripe) y métodos locales simulados.</li>
+    <li>Sistema de reputación con reseñas en tiempo real.</li>
+    <li>Geolocalización del punto de encuentro.</li>
+    <li>Verificación de guías por el administrador.</li>
+  </ul>
+</section>
+
+<!-- 5 USUARIOS -->
+<section>
+  <h2 class="tt">Usuarios y roles</h2>
+  <div class="grid g3" style="margin-top:.4em;">
+    <div class="card"><div style="font-size:1.6em">🧳</div><h3>Turista</h3><p>Busca, reserva, paga y califica experiencias.</p></div>
+    <div class="card"><div style="font-size:1.6em">🛶</div><h3>Guía / Pescador</h3><p>Publica experiencias y marca el punto de encuentro (previa verificación).</p></div>
+    <div class="card"><div style="font-size:1.6em">🛡️</div><h3>Administrador</h3><p>Verifica guías y gestiona usuarios, experiencias y pagos.</p></div>
+  </div>
+</section>
+
+<!-- 6 ARQUITECTURA -->
+<section>
+  <h2 class="tt">Arquitectura del sistema</h2>
+  <div class="arch">
+    <div class="box"><b>Frontend</b><small>React · SPA</small><div class="ic"><img src="https://cdn.simpleicons.org/react" onerror="this.style.display='none'"><img src="https://cdn.simpleicons.org/tailwindcss" onerror="this.style.display='none'"></div></div>
+    <div class="ar">⟷</div>
+    <div class="box"><b>API REST</b><small>Node + Express · JWT</small><div class="ic"><img src="https://cdn.simpleicons.org/nodedotjs" onerror="this.style.display='none'"><img src="https://cdn.simpleicons.org/express" onerror="this.style.display='none'"></div></div>
+    <div class="ar">⟷</div>
+    <div class="box"><b>Base de datos</b><small>PostgreSQL · Neon</small><div class="ic"><img src="https://cdn.simpleicons.org/postgresql" onerror="this.style.display='none'"></div></div>
+  </div>
+  <p class="muted center" style="font-size:.6em;margin-top:.8em;">Autenticación con <strong>JWT</strong> en cada petición · Desplegado <strong>serverless</strong> en Vercel</p>
+</section>
+
+<!-- 7 STACK -->
+<section>
+  <h2 class="tt">Stack tecnológico</h2>
+  <div class="cat">Frontend</div>
+  <div class="logos" style="grid-template-columns:repeat(5,1fr)">
+    <div class="logo-card"><img src="https://cdn.simpleicons.org/react" onerror="this.style.display='none'"><span>React</span></div>
+    <div class="logo-card"><img src="https://cdn.simpleicons.org/vite" onerror="this.style.display='none'"><span>Vite</span></div>
+    <div class="logo-card"><img src="https://cdn.simpleicons.org/tailwindcss" onerror="this.style.display='none'"><span>Tailwind</span></div>
+    <div class="logo-card"><img src="https://cdn.simpleicons.org/openstreetmap" onerror="this.style.display='none'"><span>MapLibre/OSM</span></div>
+    <div class="logo-card"><img src="https://cdn.simpleicons.org/axios" onerror="this.style.display='none'"><span>Axios</span></div>
+  </div>
+  <div class="cat">Backend</div>
+  <div class="logos" style="grid-template-columns:repeat(4,1fr)">
+    <div class="logo-card"><img src="https://cdn.simpleicons.org/nodedotjs" onerror="this.style.display='none'"><span>Node.js</span></div>
+    <div class="logo-card"><img src="https://cdn.simpleicons.org/express" onerror="this.style.display='none'"><span>Express</span></div>
+    <div class="logo-card"><img src="https://cdn.simpleicons.org/jsonwebtokens" onerror="this.style.display='none'"><span>JWT</span></div>
+    <div class="logo-card"><img src="https://cdn.simpleicons.org/stripe" onerror="this.style.display='none'"><span>Stripe</span></div>
+  </div>
+  <div style="display:flex;gap:30px;">
+    <div style="flex:1"><div class="cat">Base de datos</div>
+      <div class="logos" style="grid-template-columns:repeat(2,1fr)">
+        <div class="logo-card"><img src="https://cdn.simpleicons.org/postgresql" onerror="this.style.display='none'"><span>PostgreSQL</span></div>
+        <div class="logo-card"><img src="https://cdn.simpleicons.org/neon" onerror="this.style.display='none'"><span>NeonDB</span></div>
+      </div></div>
+    <div style="flex:1.5"><div class="cat">Despliegue y herramientas</div>
+      <div class="logos" style="grid-template-columns:repeat(5,1fr)">
+        <div class="logo-card"><img src="https://cdn.simpleicons.org/vercel" onerror="this.style.display='none'"><span>Vercel</span></div>
+        <div class="logo-card"><img src="https://cdn.simpleicons.org/git" onerror="this.style.display='none'"><span>Git</span></div>
+        <div class="logo-card"><img src="https://cdn.simpleicons.org/github" onerror="this.style.display='none'"><span>GitHub</span></div>
+        <div class="logo-card"><img src="https://cdn.simpleicons.org/swagger" onerror="this.style.display='none'"><span>Swagger</span></div>
+        <div class="logo-card"><img src="https://cdn.simpleicons.org/clickup" onerror="this.style.display='none'"><span>ClickUp</span></div>
+      </div></div>
+  </div>
+</section>
+
+<!-- 8 MODELO DE DATOS -->
+<section>
+  <h2 class="tt">Modelo de datos</h2>
+  <p class="muted" style="font-size:.62em;">PostgreSQL (Neon) · 6 tablas · normalizado a <strong>3FN</strong> · integridad referencial</p>
+  <div class="er">
+    <div class="e"><b>usuarios</b><p>turista / guía / admin</p></div>
+    <div class="e"><b>experiencias</b><p>precio, cupos, lat/lng, Stripe</p></div>
+    <div class="e"><b>reservas</b><p>fecha, personas, estado</p></div>
+    <div class="e"><b>ratings</b><p>puntuación 1–5, comentario</p></div>
+    <div class="e"><b>pagos</b><p>método, valor, estado</p></div>
+    <div class="e"><b>solicitudes_guia</b><p>verificación de guías</p></div>
+  </div>
+  <p class="muted center" style="font-size:.55em;margin-top:.6em;">usuarios 1—N experiencias · experiencias 1—N reservas · reservas 1—N pagos</p>
+</section>
+
+<!-- 9 FUNCIONALIDADES -->
+<section>
+  <h2 class="tt">Funcionalidades clave</h2>
+  <div class="feat">
+    <div class="f"><span class="em">🔎</span><div><b>Catálogo con filtros</b><p>Vista lista + detalle</p></div></div>
+    <div class="f"><span class="em">📅</span><div><b>Reservas</b><p>Con control de cupos</p></div></div>
+    <div class="f"><span class="em">⭐</span><div><b>Reseñas en tiempo real</b><p>Calificación 1–5</p></div></div>
+    <div class="f"><span class="em">🗺️</span><div><b>Mapa del punto de encuentro</b><p>El guía lo marca</p></div></div>
+    <div class="f"><span class="em">🛶</span><div><b>Panel del guía</b><p>Publica y gestiona</p></div></div>
+    <div class="f"><span class="em">🛡️</span><div><b>Panel admin</b><p>Control total + métricas</p></div></div>
+  </div>
+</section>
+
+<!-- 10 PAGOS -->
+<section>
+  <h2 class="tt">Pagos con Stripe</h2>
+  <div class="center"><img src="https://cdn.simpleicons.org/stripe" style="width:60px" onerror="this.style.display='none'"></div>
+  <div class="steps">
+    <div class="s"><div class="n">1</div><p>Al crear la experiencia se genera <b>Producto + Precio</b> en Stripe</p></div>
+    <div class="s"><div class="n">2</div><p>Al reservar se crea una <b>Checkout Session</b></p></div>
+    <div class="s"><div class="n">3</div><p>Confirmación por <b>webhook</b> + verificación (idempotente)</p></div>
+    <div class="s"><div class="n">4</div><p>La reserva pasa a <b>confirmada</b></p></div>
+  </div>
+  <p class="muted center" style="font-size:.55em;margin-top:.6em;">Modo de prueba · preparado para comisiones por guía (marketplace)</p>
+</section>
+
+<!-- 11 MAPAS -->
+<section>
+  <h2 class="tt">Mapas — punto de encuentro</h2>
+  <div class="grid g2" style="align-items:center;">
+    <div>
+      <ul class="check">
+        <li>El guía <strong>marca el punto</strong> en el mapa al publicar.</li>
+        <li>El turista lo <strong>visualiza</strong> en la oferta.</li>
+        <li>El admin ve <strong>todos los puntos</strong> en un mapa global.</li>
+      </ul>
+      <p class="muted" style="font-size:.55em">Tecnología <strong>gratis y sin API key</strong>.</p>
+    </div>
+    <div class="card lav center">
+      <div style="font-size:3em">📍🗺️</div>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:10px">
+        <img src="https://cdn.simpleicons.org/maplibre" style="width:40px" onerror="this.style.display='none'">
+        <img src="https://cdn.simpleicons.org/openstreetmap" style="width:40px" onerror="this.style.display='none'">
+      </div>
+      <p style="font-size:.5em;margin-top:6px">MapLibre GL + OpenStreetMap</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12 SEGURIDAD -->
+<section>
+  <h2 class="tt">Seguridad</h2>
+  <div class="grid g2">
+    <ul class="check">
+      <li>Contraseñas cifradas con <strong>bcrypt</strong>.</li>
+      <li>Autenticación <strong>JWT</strong> por rol.</li>
+      <li>Acceso restringido (turista/guía/admin).</li>
+    </ul>
+    <ul class="check">
+      <li>Claves en <strong>variables de entorno</strong> (no en el código).</li>
+      <li>Consultas <strong>parametrizadas</strong> (anti SQL injection).</li>
+      <li>Conexión <strong>SSL</strong> a la base de datos.</li>
+    </ul>
+  </div>
+  <p class="center" style="margin-top:.5em"><span class="pill">🔒 El rol "guía" solo lo aprueba el administrador</span></p>
+</section>
+
+<!-- 13 METODOLOGÍA -->
+<section>
+  <h2 class="tt">Metodología y gestión</h2>
+  <div class="grid g3">
+    <div class="card lav"><h3>SDD</h3><p>Spec-Driven: especificar antes de programar, con trazabilidad.</p></div>
+    <div class="card lav"><h3>Sprints</h3><p>8 semanas: definición, arquitectura, 4 sprints, QA y entrega.</p></div>
+    <div class="card lav"><h3>GitFlow</h3><p>Ramas por rol + develop + producción, con Pull Requests.</p></div>
+  </div>
+  <div class="center" style="margin-top:1em;display:flex;gap:24px;justify-content:center">
+    <img src="https://cdn.simpleicons.org/git" style="width:40px" onerror="this.style.display='none'">
+    <img src="https://cdn.simpleicons.org/github" style="width:40px" onerror="this.style.display='none'">
+    <img src="https://cdn.simpleicons.org/clickup" style="width:40px" onerror="this.style.display='none'">
+  </div>
+</section>
+
+<!-- 14 EQUIPO -->
+<section>
+  <h2 class="tt">El equipo</h2>
+  <div class="grid g2">
+    <div class="card"><h3>🎯 Esteban Merlano</h3><p>Líder del proyecto, desarrollo del <b>backend/API</b>, integración y <b>despliegue</b> a producción.</p></div>
+    <div class="card"><h3>🗄️ Andres Rangel</h3><p>Diseño del <b>modelo de datos</b>, normalización, seguridad e integridad de la información.</p></div>
+    <div class="card"><h3>🎨 Keyner Trujillo</h3><p>Desarrollo del <b>frontend</b> en React, UX/UI y consumo de la API.</p></div>
+    <div class="card"><h3>🧪 Jhon Escobar</h3><p><b>Aseguramiento de calidad</b>: plan de pruebas, seguridad y revisión de código.</p></div>
+  </div>
+</section>
+
+<!-- 15 QA -->
+<section>
+  <h2 class="tt">Calidad y pruebas</h2>
+  <div class="grid g3 center">
+    <div class="card"><div class="big">22</div><p>casos de prueba<br>(15 funcionales + 7 de seguridad)</p></div>
+    <div class="card"><div class="big">3</div><p>bugs encontrados<br>y corregidos</p></div>
+    <div class="card"><div class="big">100%</div><p>casos exitosos<br>tras correcciones</p></div>
+  </div>
+  <p class="muted center" style="font-size:.58em;margin-top:.7em;">Revisión de código por <strong>Pull Requests</strong> antes de integrar.</p>
+</section>
+
+<!-- 16 DESPLIEGUE -->
+<section>
+  <h2 class="tt">Despliegue — ¡en producción!</h2>
+  <div class="grid g2" style="align-items:center">
+    <div>
+      <div style="display:flex;gap:18px;align-items:center;margin-bottom:10px">
+        <img src="https://cdn.simpleicons.org/vercel" style="width:40px" onerror="this.style.display='none'">
+        <img src="https://cdn.simpleicons.org/neon" style="width:40px" onerror="this.style.display='none'">
+        <span class="muted" style="font-size:.6em">Vercel + NeonDB</span>
+      </div>
+      <ul class="check" style="font-size:.92em">
+        <li>App: <span class="url">muelle-digital.vercel.app</span></li>
+        <li>API: <span class="url">muelle-digital-api.vercel.app</span></li>
+        <li>Variables de entorno cifradas.</li>
+      </ul>
+    </div>
+    <div class="center">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&color=512888&data=https://muelle-digital.vercel.app" style="border-radius:12px" onerror="this.style.display='none'">
+      <p class="muted" style="font-size:.5em">Escanea y pruébalo en vivo</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17 RESULTADOS -->
+<section>
+  <h2 class="tt">Resultados y trabajo futuro</h2>
+  <div class="grid g2">
+    <div class="card lav"><h3>✅ Resultados</h3><ul class="check" style="font-size:.62em"><li>13/13 historias de usuario implementadas.</li><li>Producto funcional y <strong>desplegado</strong>.</li><li>Pagos y mapas operativos.</li></ul></div>
+    <div class="card lav"><h3>🚀 Trabajo futuro</h3><ul style="font-size:.62em;color:var(--gris)"><li>Stripe Connect (comisiones por guía).</li><li>Pruebas automatizadas (CI/CD).</li><li>Aplicación móvil.</li></ul></div>
+  </div>
+</section>
+
+<!-- 18 GRACIAS -->
+<section data-background-gradient="linear-gradient(135deg,#2c1e4f,#512888)" class="center" style="color:#fff">
+  <img class="logo" src="logomuelle.png" style="width:130px;height:130px;border-radius:50%;background:#fff;padding:12px" alt="">
+  <h1 style="color:#fff;-webkit-text-fill-color:#fff;font-size:2.4em;margin:.3em 0 .1em">¡Gracias!</h1>
+  <p style="color:#e9e2fb;font-size:.85em">Muelle Digital — un producto <strong style="color:#fff">real, funcional y desplegado</strong>.</p>
+  <p class="url" style="color:#c9b8f5;margin-top:.6em">muelle-digital.vercel.app</p>
+  <p style="color:#b9a7e8;font-size:.55em;margin-top:1em">Esteban Merlano · Andres Rangel · Keyner Trujillo · Jhon Escobar</p>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash:true, controls:true, progress:true, center:false,
+    slideNumber:'c/t', transition:'slide', width:1180, height:740, margin:0.055,
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "muelle-export-docx",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Convierte los entregables .md a Word (.docx)",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "docx": "^9.7.1",
+    "html-to-docx": "^1.8.0",
+    "marked": "^14.1.4",
+    "pptxgenjs": "^4.0.1"
+  }
+}
